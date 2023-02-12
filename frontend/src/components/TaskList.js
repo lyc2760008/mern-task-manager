@@ -18,9 +18,7 @@ const TaskList = () => {
   const getTasks = async () => {
     setIsLoading(true);
     try {
-      const { data } = await axios.get(
-        `https://my-pro-task-manager.herokuapp.com/api/v1/tasks`
-      );
+      const { data } = await axios.get(`${URL}/api/v1/tasks`);
       const todo = data.filter((item) => item.completed === false);
       const completedTasks = data.filter((item) => item.completed === true);
       setTasks(todo);

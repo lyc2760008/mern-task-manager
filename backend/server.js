@@ -5,6 +5,7 @@ const dotenv = require("dotenv").config();
 const mongoose = require("mongoose");
 const Task = require("./Models/taskModel");
 const cors = require("cors");
+const path = require("path");
 
 const taskRoutes = require("./Routes/taskRoute");
 
@@ -25,14 +26,7 @@ mongoose
 //MiddleWare
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(
-  cors({
-    origin: [
-      "http://localhost:3000",
-      "https://my-pro-task-manager.herokuapp.com",
-    ],
-  })
-);
+app.use(cors());
 app.use("/api/v1/tasks", taskRoutes);
 
 /*code block below is explaining what is middel ware*/
@@ -50,5 +44,9 @@ if (process.env.NODE_ENV === "production") {
   // index.html for all page routes    html or routing and naviagtion
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../frontend", "build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("Home Page bla!");
   });
 }

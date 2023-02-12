@@ -29,7 +29,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://my-pro-task-manager.herokuapp.com/",
+      "https://my-pro-task-manager.herokuapp.com",
     ],
   })
 );

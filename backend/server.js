@@ -27,7 +27,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://mern-task-app.onrender.com"],
+    origin: [
+      "http://localhost:3000",
+      "https://my-pro-task-manager.herokuapp.com/",
+    ],
   })
 );
 app.use("/api/v1/tasks", taskRoutes);
@@ -39,7 +42,3 @@ app.use("/api/v1/tasks", taskRoutes);
 };*/
 
 //routes
-
-app.get("/", (req, res) => {
-  res.send("<h1>Welcome!!</h1>");
-});
